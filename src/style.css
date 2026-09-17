@@ -1,35 +1,45 @@
 @font-face {
-    font-family: 'Roboto';
-    src: url('./asset/Roboto-Regular.woff2') format('woff2'),
-        url('./asset/Roboto-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-:root {
-  --blue: #6cace9;
-  --light-grey: #f3f7fb;
-  --button: #2475e8;
+  font-family: "Roboto";
+  src:
+    url("./asset/Roboto-Regular.woff2") format("woff2"),
+    url("./asset/Roboto-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: Roboto, system-ui, sans-serif;
   /* border: 1px solid black; */
 }
 
+body {
+  min-height: 100vh;
+  background-image: url("./asset/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .weather-widget {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   gap: 3rem;
-  width: 800px;
-  height: 800px;
-  margin: 0 auto;
+  width: min(800px, 90vw);
+  min-height: 800px;
   padding: 30px;
+  margin-top: auto;
   border-radius: 20px;
-  background-color: var(--blue);
+  background-color: rgba(255, 255, 255, 0.3);
+  /* eslint-disable-next-line css/use-baseline */
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   color: white;
 }
 
@@ -56,7 +66,7 @@
 }
 
 .celsius {
-  background-color: var(--button);
+  background-color: #2475e8;
 }
 
 .celsius,
@@ -73,7 +83,7 @@
 .search-bar {
   display: flex;
   gap: 10px;
-  background-color: var(--light-grey);
+  background-color: #f3f7fb;
   border-radius: 12px;
   height: 40px;
   padding: 5px 10px;
@@ -92,4 +102,15 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
+}
+
+.credit {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: auto;
+}
+
+.credit a {
+  color: inherit;
+  font-size: inherit;
 }
