@@ -1,3 +1,95 @@
-body {
-    background-color: antiquewhite;
+@font-face {
+    font-family: 'Roboto';
+    src: url('./asset/Roboto-Regular.woff2') format('woff2'),
+        url('./asset/Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+  --blue: #6cace9;
+  --light-grey: #f3f7fb;
+  --button: #2475e8;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  /* border: 1px solid black; */
+}
+
+.weather-widget {
+  display: flex;
+  flex-direction: column;  
+  gap: 3rem;
+  width: 800px;
+  height: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: var(--blue);
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h1 {
+  font-size: 3rem;
+}
+
+.header button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  width: 90px;
+  height: 30px;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.celsius {
+  background-color: var(--button);
+}
+
+.celsius,
+.fahrenheit {
+  width: 50%;
+  border-radius: 20px;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  background-color: var(--light-grey);
+  border-radius: 12px;
+  height: 40px;
+  padding: 5px 10px;
+}
+
+input[type="image"] {
+  width: 1.5rem;
+}
+
+input[type="text"] {
+  flex: 1;
+  border: none;
+  background-color: inherit;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus {
+  outline: none;
 }
