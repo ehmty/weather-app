@@ -13,7 +13,7 @@ function showCurrentWeather(processedData) {
   condition.textContent = `${processedData.currentConditions.conditions}`;
   feelsLike.textContent = `${processedData.currentConditions.feelslike}°`;
   humidity.textContent = `${processedData.currentConditions.humidity}%`;
-  wind.textContent = `${processedData.currentConditions.windspeed}km/h`;
+  wind.textContent = `${processedData.currentConditions.windspeed} km/h`;
 }
 
 function showForecast(processedData) {
