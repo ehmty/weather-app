@@ -135,6 +135,10 @@ input[type="text"]:focus {
   font-weight: 600;
 }
 
+.location-info h2::first-letter {
+  text-transform: capitalize;
+}
+
 .location-info p {
   margin-top: 4px;
   font-size: 0.95rem;
@@ -236,6 +240,6 @@ input[type="text"]:focus {
 }
 
 .forecast-day div:last-child {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
