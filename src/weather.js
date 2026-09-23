@@ -2,6 +2,7 @@ export function processWeatherData(result) {
   return {
     address: result.address,
     description: result.description,
+    icon: result.currentConditions.icon,
     currentConditions: {
       temp: result.currentConditions.temp,
       feelslike: result.currentConditions.feelslike,
@@ -15,6 +16,7 @@ export function processWeatherData(result) {
       }),
       tempmax: day.tempmax,
       tempmin: day.tempmin,
+      icon: day.icon,
     })),
   };
 }
