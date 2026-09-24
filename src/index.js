@@ -23,7 +23,7 @@ form.addEventListener("submit", async (e) => {
     showForecast(processedData, currentUnit);
 
     form.reset();
-  } catch (err) {
+  } catch {
     showLocationError();
   }
 });
