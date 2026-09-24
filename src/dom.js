@@ -9,6 +9,7 @@ import snow from "./asset/snow.svg";
 import wind from "./asset/wind.svg";
 import thermometer from "./asset/thermometer.svg";
 import raindrop from "./asset/raindrop.svg";
+import { convertToFahrenheit } from "./weather.js";
 
 const weatherIcons = {
   "clear-day": clearDay,
@@ -22,9 +23,15 @@ const weatherIcons = {
   wind: wind,
 };
 
-function showCurrentWeather(processedData) {
-  const currentWeather = document.querySelector(".current-weather");
+function getTemperature(temp, unit) {
+  if (unit === "fahrenheit") {
+    return Math.round(convertToFahrenheit(temp));
+  }
+  return Math.round(temp);
+}
 
+function showCurrentWeather(processedData, unit) {
+  const currentWeather = document.querySelector(".current-weather");
   currentWeather.textContent = "";
 
   const locationInfo = document.createElement("div");
@@ -50,7 +57,7 @@ function showCurrentWeather(processedData) {
 
   const tempValue = document.createElement("div");
   tempValue.classList.add("temp-value");
-  tempValue.textContent = `${processedData.currentConditions.temp}°`;
+  tempValue.textContent = `${getTemperature(processedData.currentConditions.temp, unit)}°`;
 
   const condition = document.createElement("div");
   condition.classList.add("condition");
@@ -65,7 +72,7 @@ function showCurrentWeather(processedData) {
   const details = [
     {
       label: "Feels like",
-      value: `${processedData.currentConditions.feelslike}°`,
+      value: `${getTemperature(processedData.currentConditions.feelslike, unit)}°`,
       icon: thermometer,
     },
     {
@@ -101,9 +108,8 @@ function showCurrentWeather(processedData) {
   currentWeather.append(locationInfo, weatherMain, weatherDetails);
 }
 
-function showForecast(processedData) {
+function showForecast(processedData, unit) {
   const forecast = document.querySelector(".forecast");
-
   forecast.textContent = "";
 
   processedData.days.slice(0, 5).forEach((day, index) => {
@@ -120,15 +126,24 @@ function showForecast(processedData) {
 
     const tempMax = document.createElement("div");
     tempMax.classList.add("tempmax");
-    tempMax.textContent = `${day.tempmax}°`;
+    tempMax.textContent = `${getTemperature(day.tempmax, unit)}°`;
 
     const tempMin = document.createElement("div");
     tempMin.classList.add("tempmin");
-    tempMin.textContent = `${day.tempmin}°`;
+    tempMin.textContent = `${getTemperature(day.tempmin, unit)}°`;
 
     forecastDay.append(weekday, icon, tempMax, tempMin);
     forecast.append(forecastDay);
   });
 }
 
-export { showCurrentWeather, showForecast };
+function toggleUnitButton(unit) {
+  const celsius = document.querySelector(".celsius");
+  const fahrenheit = document.querySelector(".fahrenheit");
+
+  celsius.classList.toggle("active", unit === "celsius");
+  fahrenheit.classList.toggle("active", unit === "fahrenheit");
+
+}
+
+export { showCurrentWeather, showForecast, toggleUnitButton };
