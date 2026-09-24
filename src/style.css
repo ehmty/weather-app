@@ -92,14 +92,14 @@ input[type="image"] {
   width: 1.5rem;
 }
 
-input[type="text"] {
+#location {
   flex: 1;
   border: none;
   background-color: inherit;
   font-size: 1rem;
 }
 
-input[type="text"]:focus {
+#location:focus {
   outline: none;
 }
 
