@@ -143,7 +143,16 @@ function toggleUnitButton(unit) {
 
   celsius.classList.toggle("active", unit === "celsius");
   fahrenheit.classList.toggle("active", unit === "fahrenheit");
-
 }
 
-export { showCurrentWeather, showForecast, toggleUnitButton };
+function showLocationError() {
+  const error = document.querySelector(".error");
+  error.textContent = "Location not found";
+}
+
+function clearLocationError() {
+  const error = document.querySelector(".error");
+  error.textContent = "";
+}
+
+export { showCurrentWeather, showForecast, toggleUnitButton, showLocationError, clearLocationError };

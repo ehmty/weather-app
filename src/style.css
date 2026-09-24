@@ -13,7 +13,6 @@
   padding: 0;
   margin: 0;
   font-family: Roboto, system-ui, sans-serif;
-  /* border: 1px solid black; */
 }
 
 body {
@@ -102,6 +101,18 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
+}
+
+.search-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.error {
+  color: #ff6c6c;
+  font-size: 0.8rem;
+  padding-left: 20px;
 }
 
 .credit {

@@ -17,6 +17,7 @@ export function processWeatherData(result) {
       tempmax: day.tempmax,
       tempmin: day.tempmin,
       icon: day.icon,
+      conditions: day.conditions,
     })),
   };
 }

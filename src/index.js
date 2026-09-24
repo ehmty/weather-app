@@ -1,22 +1,31 @@
 import "./style.css";
 import { fetchWeatherData } from "./api.js";
 import { processWeatherData } from "./weather.js";
-import { showCurrentWeather, showForecast, toggleUnitButton } from "./dom.js";
+import { showCurrentWeather, showForecast, toggleUnitButton, showLocationError, clearLocationError } from "./dom.js";
 
 let currentUnit = "celsius";
 let processedData;
 
-const form = document.querySelector(".search-bar");
+const form = document.querySelector("form");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  clearLocationError();
+
   const formData = new FormData(form);
   const location = formData.get("location");
-  const fetchedData = await fetchWeatherData(location);
-  processedData = processWeatherData(fetchedData);
 
-  showCurrentWeather(processedData, currentUnit);
-  showForecast(processedData, currentUnit);
-  form.reset();
+  try {
+    const fetchedData = await fetchWeatherData(location);
+    processedData = processWeatherData(fetchedData);
+
+    showCurrentWeather(processedData, currentUnit);
+    showForecast(processedData, currentUnit);
+
+    form.reset();
+  } catch (err) {
+    showLocationError();
+  }
 });
 
 const button = document.querySelector("button");
