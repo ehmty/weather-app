@@ -50,7 +50,7 @@ function showCurrentWeather(processedData, unit) {
 
   const currentDayIcon = document.createElement("img");
   currentDayIcon.src = weatherIcons[processedData.icon];
-  currentDayIcon.alt = processedData.currentConditions.conditions;
+  currentDayIcon.alt = "";
 
   const temperature = document.createElement("div");
   temperature.classList.add("temperature");
