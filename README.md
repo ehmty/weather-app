@@ -1,3 +1,3 @@
 # Project: Weather-App
 
-### Live Preview:
+### Live Preview: https://ehmty.github.io/weather-app/
